@@ -27,6 +27,8 @@ public class UserService {
         SqlSession session = DBTools.getSession();
         UserMapper mapper = session.getMapper(UserMapper.class);
         UserBean user = new UserBean("test01", "123456", 7000.0);
+        String json=JsonHelpService.ObjectToString(user);
+        logger.error("新增用户user json string对象:{}",new Object[]{json});
         try {
             int index=mapper.insertUser(user);
             boolean bool=index>0?true:false;
